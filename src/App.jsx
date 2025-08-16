@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { motion } from "framer-motion";
 import { Github, Linkedin, Mail, Award } from "lucide-react";
-
+import myself from './assets/myself.png'; // <-- Correct image import
 // ---------------------- DATA ----------------------
 const DATA = {
   name: "Chandan Kumar",
@@ -10,7 +10,7 @@ const DATA = {
   email: "itschandan26@gmail.com",
   linkedin: "https://www.linkedin.com/in/chandankr12/",
   github: "https://github.com/22chandan",
-  heroImage: "https://via.placeholder.com/176",
+  heroImage: myself, // <-- Use imported image variable
   about: `I build responsive, high-performance cross-platform apps and scalable web backends. Experienced with Flutter, React, Node.js, AWS, and realtime systems. I'm currently finishing my B.Tech and seeking full-time roles where I can design great products and ship reliable systems.`,
   skills: [
     "ReactJS",
@@ -155,7 +155,7 @@ export default function App() {
 
           <div className="flex flex-col md:flex-row md:items-center gap-6 relative z-10">
             <motion.img
-              src={DATA.heroImage}
+              src={DATA.heroImage} // <-- This now uses the imported image
               alt="hero"
               initial={{ opacity: 0, scale: 0.9 }}
               animate={{ opacity: 1, scale: 1 }}
