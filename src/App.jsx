@@ -39,13 +39,6 @@ const DATA = {
       repo: "https://github.com/22chandan/KrishiJodd",
       demo: "#",
     },
-    {
-      title: "Umla (TestWin)",
-      desc: "Real-time chat and AI quiz apps with thousands of users and payment integrations.",
-      tech: ["React", "Flutter", "Node", "Socket.io"],
-      repo: "https://github.com/22chandan",
-      demo: "#",
-    },
   ],
   experience: [
     {
