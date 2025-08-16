@@ -39,6 +39,27 @@ const DATA = {
       repo: "https://github.com/22chandan/KrishiJodd",
       demo: "#",
     },
+    {
+      title: "Gemini Clone",
+      desc: "Full-featured Google Gemini AI clone with modern UI, real-time chat, and responsive design.",
+      tech: ["ReactJS", "TailwindCSS"],
+      repo: "https://github.com/22chandan/Gemini",
+      demo: "https://gemini-beta-amber.vercel.app/",
+    },
+    {
+      title: "Object Detection & Text-to-Speech",
+      desc: "AI-powered object detection system that converts detected objects to text and provides audio output using text-to-speech.",
+      tech: ["Python", "OpenCV", "TensorFlow", "Text-to-Speech"],
+      repo: "https://github.com/22chandan/object-detection-and-convert-the-object-to-text-and-text-to-speech",
+      demo: "#",
+    },
+    {
+      title: "Expense Tracker",
+      desc: "Personal finance management app for tracking expenses, categorizing transactions, and generating spending reports.",
+      tech: ["React", "JavaScript", "LocalStorage"],
+      repo: "https://github.com/22chandan/Expense-tracker",
+      demo: "#",
+    },
   ],
   experience: [
     {
@@ -95,6 +116,7 @@ export default function App() {
     email: "",
     message: "",
   });
+  const [showAllProjects, setShowAllProjects] = useState(false);
 
   const handleChange = (e) => {
     setFormData({ ...formData, [e.target.name]: e.target.value });
@@ -107,6 +129,9 @@ export default function App() {
     )}%0D%0AFrom:%20${formData.email}`;
   };
 
+  // Resume/CV Google Drive link
+  const resumeLink = "https://drive.google.com/file/d/1MSB4oMaOyFOgX77Xn7gwbArG2NsGcKxu/view?usp=sharing";
+
   return (
     <div className="min-h-screen bg-gradient-to-b from-white to-slate-50 dark:from-slate-900 dark:to-slate-900 text-slate-900 dark:text-slate-100">
       {/* HEADER */}
@@ -116,7 +141,17 @@ export default function App() {
             CK
           </div>
           <div>
-            <div className="font-semibold">{DATA.name}</div>
+            <div className="flex items-center gap-3">
+              <span className="font-semibold">{DATA.name}</span>
+              <a
+                href={resumeLink}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="text-xs bg-indigo-600 text-white px-2 py-1 rounded hover:bg-indigo-700 transition"
+              >
+                Resume/CV
+              </a>
+            </div>
             <div className="text-xs text-slate-500 dark:text-slate-400">
               {DATA.title}
             </div>
@@ -192,6 +227,17 @@ export default function App() {
           </div>
         </motion.div>
 
+        {/* Quote below hero section */}
+        <div className="text-center my-6">
+          <span
+            className="italic text-lg cursor-pointer text-indigo-700 hover:underline"
+            onClick={() => window.open(DATA.github, "_blank")}
+            title="Go to my GitHub"
+          >
+            "Code is like humor. When you have to explain it, it’s bad." — Cory House
+          </span>
+        </div>
+
         {/* EXPERIENCE TIMELINE (before projects) */}
         <motion.section
           id="experience"
@@ -243,7 +289,7 @@ export default function App() {
         >
           <h2 className="text-2xl font-semibold text-center">Projects</h2>
           <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-            {DATA.projects.map((p) => (
+            {(showAllProjects ? DATA.projects : DATA.projects.slice(0, 2)).map((p) => (
               <motion.article
                 key={p.title}
                 whileHover={{ scale: 1.03, rotate: 0.5 }}
@@ -273,6 +319,16 @@ export default function App() {
               </motion.article>
             ))}
           </div>
+          {DATA.projects.length > 2 && (
+            <div className="text-center mt-4">
+              <button
+                className="px-4 py-2 bg-indigo-600 text-white rounded-lg hover:bg-indigo-700 transition"
+                onClick={() => setShowAllProjects((v) => !v)}
+              >
+                {showAllProjects ? "Show Less" : "Show More Projects"}
+              </button>
+            </div>
+          )}
         </motion.div>
 
         {/* ACHIEVEMENTS */}
